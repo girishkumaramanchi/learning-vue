@@ -1,0 +1,57 @@
+/* --height: 100%;
+  height: var(--height); */
+
+To change a property inside a class, you can use CSS custom properties:
+
+.fillTimerBar {
+    --width: 100%;
+    width: var(--width);
+    height: 8px;
+}
+In Vue, you can bind CSS variables to the style:
+
+<div class="fillTimerBar" :style="`--width: ${computedWidth}`"></div>
+
+
+You have to use v-bind:style directive.
+
+var vm = new Vue({
+  el: '#example',
+  data: {
+     width:'200px'
+  },
+  computed: {
+    computedWidth: function () {
+      return this.width;
+    }
+  },
+  methods: {
+    changeWidth: function (event) {
+      this.width='100px';
+    }
+  }
+})
+#myDiv{
+  background-color:red;
+  height:200px;
+}
+<script src="https://unpkg.com/vue@2.4.3/dist/vue.js"></script>
+
+<div id="example">
+  <div id="myDiv" v-bind:style="{ width: computedWidth }"></div>
+  <button v-on:click="changeWidth()">Change</button>
+</div>
+
+changeheight: function () {
+  this.worksheetDetailsHeight+=50;
+  console.log(this.worksheetDetailsHeight);
+  this.worksheetDetailsHeightpx = String(this.worksheetDetailsHeight)+"px";
+  console.log(this.worksheetDetailsHeightpx);
+}
+computedWidth: function () {
+  return this.worksheetDetailsHeightpx;
+}
+        
+        
+        
+        
